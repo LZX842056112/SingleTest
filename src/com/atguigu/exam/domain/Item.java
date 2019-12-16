@@ -33,6 +33,10 @@ public class Item {
 	}
 	@Override
 	public String toString() {
-		return "Item [question=" + question + ", options=" + Arrays.toString(options) + ", answer=" + answer + "]";
-	}
+        return question + "\n" +
+               options[0] + "\n" +
+               options[1] + "\n" +
+               options[2] + "\n" +
+               options[3] + "\n标准答案：" + answer + "\n";
+    }
 }

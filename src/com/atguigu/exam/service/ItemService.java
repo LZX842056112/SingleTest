@@ -1,10 +1,12 @@
 package com.atguigu.exam.service;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,12 +126,28 @@ public class ItemService {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	 public char[] readAnswer() {
+	        char[] answer = null;
+
+	        FileInputStream fis = null;
+	        ObjectInputStream ois = null;
+
+	        try {
+	            fis = new FileInputStream(ANSWER_FILENAME);
+	            ois = new ObjectInputStream(fis);
+
+	            answer = (char[])ois.readObject();
+	        } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	        } finally {
+	            if (ois != null) {
+	                try {
+	                    ois.close();
+	                } catch (IOException e) {
+	                    System.out.println(e.getMessage());
+	                }
+	            }
+	        }
+	        return answer;
+	    }
 }
